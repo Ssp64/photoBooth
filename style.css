@@ -1,0 +1,301 @@
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:-apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+body{
+height:100vh;
+background:#C6C6C8;
+overflow:hidden;
+}
+
+/* ===============================
+   BOOTH (FULLSCREEN MACHINE)
+================================ */
+
+.booth{
+position:fixed;
+inset:0;
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+/* ===============================
+   CAMMY FRAME (FRONT)
+================================ */
+
+.cammy{
+position:absolute;
+inset:0;
+width:100%;
+height:100%;
+z-index:100;
+pointer-events:none;
+
+/* makes machine look real */
+filter:drop-shadow(0 25px 60px rgba(0,0,0,.7));
+}
+
+/* ===============================
+   CAMERA VIEWPORT
+================================ */
+
+.app{
+position:absolute;
+
+/* ALIGN TO CAMERA HOLE */
+top:82px;
+left:120px;
+
+/* DO NOT hardcode height */
+width:1250px;
+aspect-ratio:16/9;
+
+overflow:hidden;
+z-index:10;
+border-radius:6px; /* optional: soft edge like real screens */
+}
+
+/* ===============================
+   CAMERA
+================================ */
+
+.camera-wrap{
+position:absolute;
+inset:0;
+}
+
+/* PERFECT FILL VIDEO */
+
+video{
+position:absolute;
+inset:0;
+
+width:100%;
+height:100%;
+
+object-fit:cover;
+transform:scaleX(1);
+}
+
+canvas{
+display:none;
+}
+
+/* ===============================
+   TOP BAR
+================================ */
+
+.top-bar{
+position:absolute;
+top:22px;
+left:47%;
+transform:translateX(-50%);
+display:flex;
+gap:18px;
+z-index:20;
+}
+
+.top-bar button{
+background:none;
+border:none;
+color:white;
+font-size:18px;
+cursor:pointer;
+opacity:.85;
+transition:.2s;
+}
+
+.top-bar button:hover{
+opacity:1;
+transform:scale(1.08);
+}
+
+/* ===============================
+   TIMER MENU
+================================ */
+
+.timer-box{
+position:relative;
+}
+
+.timer-menu{
+position:absolute;
+top:48px;
+left:60%;
+transform:translateX(-50%) translateY(-10px);
+
+display:flex;
+gap:14px;
+padding:6px 12px;
+
+background:rgba(20,20,20,.75);
+backdrop-filter:blur(16px);
+
+border-radius:20px;
+
+opacity:0;
+pointer-events:none;
+transition:.25s;
+}
+
+.timer-menu.show{
+opacity:1;
+pointer-events:auto;
+transform:translateX(-50%) translateY(0);
+}
+
+.timer-menu span{
+color:white;
+cursor:pointer;
+opacity:.6;
+font-size:14px;
+}
+
+.timer-menu span.active{
+opacity:1;
+font-weight:700;
+}
+
+/* ===============================
+   SHUTTER
+================================ */
+
+.shutter{
+position:absolute;
+bottom:90px;
+left:47%;
+transform:translateX(-50%);
+
+width:75px;
+height:75px;
+border-radius:50%;
+border:7px solid white;
+background:transparent;
+cursor:pointer;
+z-index:20;
+transition:.15s;
+}
+
+.shutter:active{
+transform:translateX(-50%) scale(.9);
+}
+
+/* ===============================
+   FILTER CAROUSEL
+================================ */
+
+.filter-carousel{
+position:absolute;
+bottom:20px;
+left:47%;
+transform:translateX(-50%);
+
+display:flex;
+align-items:center;
+gap:22px;
+
+padding:10px 20px;
+border-radius:40px;
+background:rgba(20, 20, 20, 0.43);
+z-index:20;
+}
+
+.arrow{
+background:none;
+border:none;
+color:rgb(0, 0, 0);
+font-size:26px;
+cursor:pointer;
+opacity:.75;
+transition:.2s;
+}
+
+.arrow:hover{
+opacity:1;
+transform:scale(1.2);
+}
+
+.filter-name{
+color:rgba(255, 255, 255, 0.797);
+font-weight:600;
+letter-spacing:.5px;
+min-width:160px;
+text-align:center;
+}
+
+/* ===============================
+   FLASH
+================================ */
+
+.flash{
+position:absolute;
+inset:0;
+background:white;
+opacity:0;
+pointer-events:none;
+transition:.15s;
+z-index:50;
+}
+
+/* ===============================
+   TIMER
+================================ */
+
+.timer{
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+color:white;
+font-size:7rem;
+font-weight:700;
+display:none;
+z-index:50;
+}
+
+/* ===============================
+   GALLERY
+================================ */
+
+.gallery{
+position:fixed;
+bottom:-100%;
+left:0;
+width:100%;
+height:75%;
+background:#0f0f10;
+border-radius:25px 25px 0 0;
+padding:20px;
+transition:.4s;
+overflow:auto;
+z-index:200;
+}
+
+.gallery.open{
+bottom:0;
+}
+
+#galleryGrid{
+display:grid;
+grid-template-columns:repeat(auto-fill,minmax(140px,1fr));
+gap:14px;
+margin-top:20px;
+}
+
+.gallery img{
+width:100%;
+border-radius:12px;
+}
+
+.close{
+position:absolute;
+right:20px;
+top:10px;
+font-size:28px;
+color:white;
+cursor:pointer;
+}

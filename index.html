@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Photobooth</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="booth">
+
+    <div class="machine">
+
+        <!-- CAMERA VIEWPORT -->
+        <div class="app">
+
+            <div class="camera-wrap">
+                <video id="video" autoplay playsinline></video>
+                <canvas id="canvas"></canvas>
+            </div>
+
+            <div class="flash" id="flash"></div>
+            <div class="timer" id="timerText"></div>
+
+            <div class="top-bar">
+                <div class="timer-box">
+                    <button onclick="toggleTimerMenu()">⏱</button>
+
+                    <div class="timer-menu" id="timerMenu">
+                        <span onclick="setTimer(event,0)" class="active">0s</span>
+                        <span onclick="setTimer(event,3)">3s</span>
+                        <span onclick="setTimer(event,5)">5s</span>
+                        <span onclick="setTimer(event,10)">10s</span>
+                    </div>
+                </div>
+
+                <button onclick="openGallery()">🖼</button>
+            </div>
+
+            <button class="shutter" id="capture"></button>
+            <div class="filter-carousel">
+                <button class="arrow" id="prevFilter">❮</button>
+                <div class="filter-name" id="filterName">
+                    Natural
+                </div>
+                <button class="arrow" id="nextFilter">❯</button>
+            </div>
+        </div>
+
+        <!-- MACHINE IMAGE -->
+        <img src="assets/cammy.png" class="cammy">
+
+    </div>
+
+</div>
+
+
+<div class="gallery" id="gallery">
+    <div class="close" onclick="closeGallery()">✕</div>
+    <div id="galleryGrid"></div>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
