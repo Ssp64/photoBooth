@@ -47,11 +47,11 @@ filter:drop-shadow(0 25px 60px rgba(0,0,0,.7));
 position:absolute;
 
 /* ALIGN TO CAMERA HOLE */
-top:70px;
-left:110px;
+top: 70px;
+left: 110px;
 
 /* DO NOT hardcode height */
-width:1113px;
+width: 1113px;
 aspect-ratio:16/9;
 
 overflow:hidden;
@@ -299,4 +299,5 @@ font-size:28px;
 color:white;
 cursor:pointer;
 }
+
 
